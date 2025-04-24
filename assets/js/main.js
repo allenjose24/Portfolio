@@ -282,6 +282,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const sr = ScrollReveal({
+      origin: 'bottom',
+      distance: '50px',
+      duration: 1000,
+      delay: 200,
+      reset: false
+  });
+
+  sr.reveal('.social-footprints .social-post', { 
+      interval: 200 
+  });
+});
+
 
 
 
