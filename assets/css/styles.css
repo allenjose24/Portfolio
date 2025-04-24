@@ -1391,6 +1391,67 @@ body.dark-theme .day-in-life {
 body.dark-theme .day__card {
   background-color: var(--container-color-dark);
 }
+/*===============Social Footprints===========*/
+.social-footprints {
+  padding: 4rem 0;
+  background-color: #f4f4f4;
+}
+
+.social-footprints .section-title {
+  text-align: center;
+  color: #006d77;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.social-post {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.social-post:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.social-post iframe {
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .social-grid {
+      grid-template-columns: 1fr;
+  }
+}
+body.dark-theme .social-footprints {
+  background-color: #1a2525;
+}
+
+body.dark-theme .social-footprints .section-title {
+  color: #a3bffa;
+}
+
+body.dark-theme .social-post {
+  background: #2d3b3b;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .social-post:hover {
+  transform: translateY(-5px);
+}
 
 /*=============== CONTACT ===============*/
 .contact{
