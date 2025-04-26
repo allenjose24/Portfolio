@@ -1391,6 +1391,43 @@ body.dark-theme .day-in-life {
 body.dark-theme .day__card {
   background-color: var(--container-color-dark);
 }
+
+
+/*===============Visitors Count=============*/
+.visitor-count {
+    padding: 2rem 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.visitor-count .section-title {
+    color: #006d77;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.visitor-stat {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.visitor-stat p {
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+body.dark-theme .visitor-count {
+    background-color: #1a2525;
+}
+
+body.dark-theme .visitor-count .section-title {
+    color: #a3bffa;
+}
+
+body.dark-theme .visitor-stat p {
+    color: #a3bffa;
+}
 /*===============Social Footprints===========*/
 .social-footprints {
   padding: 4rem 0;
