@@ -297,6 +297,39 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// Visitors Count animation
+document.addEventListener("DOMContentLoaded", function () {
+    // ... (your existing loading animation and cursor code, if any) ...
+
+    fetch('/.netlify/functions/get-visitors')
+        .then(response => response.json())
+        .then(data => {
+            if (data.totalPageViews) {
+                document.getElementById('page-views').textContent = data.totalPageViews;
+            } else {
+                document.getElementById('page-views').textContent = 'Unavailable';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching visitor count:', error);
+            document.getElementById('page-views').textContent = 'Unavailable';
+        });
+
+    const sr = ScrollReveal({
+        origin: 'bottom',
+        distance: '50px',
+        duration: 1000,
+        delay: 200,
+        reset: false
+    });
+
+    sr.reveal('.visitor-count .visitor-stat', { interval: 200 });
+    sr.reveal('.social-footprints .social-post', { interval: 200 });
+
+    // ... (rest of your existing code, if any) ...
+});
+
+
 
 
 
