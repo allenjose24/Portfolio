@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
             property: `properties/${process.env.GA_PROPERTY_ID}`,
             dateRanges: [
                 {
-                    startDate: '2025-04-01', // Adjust to when you started GA4 tracking
+                    startDate: '2025-04-24', // Adjust to when you started GA4 tracking
                     endDate: 'today',
                 },
             ],
