@@ -85,8 +85,8 @@ The "Social Footprints" section is a highlight of the portfolio, featuring my re
 ## Contact
 
 Feel free to reach out to me via:
-- **Email**: [Your email address]
-- **LinkedIn**: [Your LinkedIn profile URL]
-- **X**: [Your X profile URL]
+- **Email**: allenjose2110@gmail.com
+- **LinkedIn**: linkedin.com/in/allen-jose/ 
+- **X**: x.com/allenjose24
 
 Thank you for visiting my portfolio repository!
