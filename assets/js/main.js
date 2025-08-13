@@ -278,9 +278,132 @@ document.addEventListener("DOMContentLoaded", function () {
   setTimeout(() => {
     loadingOverlay.classList.add("hidden");
     console.log("Loading overlay hidden, cursor should be visible now.");
+    
+    // Start the name animation after quote animation finishes
+    startNameAnimation();
   }, totalAnimationTime);
 
 });
+
+// === Matrix Roll-Down Name Animation ===
+function startNameAnimation() {
+  console.log("Starting matrix roll-down animation...");
+  
+  const firstName = "POTTUMKAL";
+  const lastName = "ALLEN JOSE";
+  const japaneseChars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+  
+  const nameLine1 = document.getElementById("name-line-1");
+  const nameLine2 = document.getElementById("name-line-2");
+
+  if (!nameLine1 || !nameLine2) {
+    console.error("Name line elements not found!");
+    return;
+  }
+
+  // Clear previous content
+  nameLine1.innerHTML = '';
+  nameLine2.innerHTML = '';
+
+  // Create letter placeholders for first line (POTTUMKAL)
+  firstName.split("").forEach(char => {
+    const span = document.createElement("span");
+    span.classList.add("name-letter");
+    span.textContent = japaneseChars[Math.floor(Math.random() * japaneseChars.length)];
+    span.style.display = "inline-block";
+    span.style.minWidth = "1ch";
+    span.style.textAlign = "center";
+    nameLine1.appendChild(span);
+  });
+
+  // Create letter placeholders for second line (ALLEN JOSE)
+  lastName.split("").forEach(char => {
+    const span = document.createElement("span");
+    span.classList.add("name-letter");
+    
+    // For spaces, keep them static
+    if (char === " ") {
+      span.textContent = " ";
+      span.style.marginRight = "0.5rem";
+      span.style.minWidth = "0.5rem";
+    } else {
+      span.textContent = japaneseChars[Math.floor(Math.random() * japaneseChars.length)];
+      span.style.display = "inline-block";
+      span.style.minWidth = "1ch";
+      span.style.textAlign = "center";
+    }
+    
+    nameLine2.appendChild(span);
+  });
+
+  const allLetters = document.querySelectorAll(".name-letter");
+  console.log(`Created ${allLetters.length} letter elements`);
+
+  // Animate all Japanese characters rolling (matrix effect)
+  let rollingInterval = setInterval(() => {
+    allLetters.forEach((span, index) => {
+      if (span.textContent !== " " && !span.dataset.revealed) {
+        span.textContent = japaneseChars[Math.floor(Math.random() * japaneseChars.length)];
+      }
+    });
+  }, 120); // matrix rolling speed
+
+  // Reveal letters sequentially (roll-down effect)
+  let revealIndex = 0;
+  function revealNextLetter() {
+    if (revealIndex < allLetters.length) {
+      const currentSpan = allLetters[revealIndex];
+      if (currentSpan.textContent !== " ") {
+        // Determine which character to reveal based on position
+        if (revealIndex < firstName.length) {
+          currentSpan.textContent = firstName[revealIndex];
+        } else {
+          const lastNameIndex = revealIndex - firstName.length;
+          currentSpan.textContent = lastName[lastNameIndex];
+        }
+        
+        currentSpan.dataset.revealed = "true";
+        currentSpan.classList.add("revealed");
+      }
+      revealIndex++;
+      setTimeout(revealNextLetter, 170); // delay between each reveal
+    } else {
+      clearInterval(rollingInterval);
+      console.log("Matrix roll-down animation completed!");
+      
+      // Add click listeners after animation completes
+      addNameClickListeners();
+    }
+  }
+
+  setTimeout(revealNextLetter, 500); // start reveal after 0.5s delay
+}
+
+// Add click event listeners to make names interactive
+function addNameClickListeners() {
+  const nameLine1 = document.getElementById("name-line-1");
+  const nameLine2 = document.getElementById("name-line-2");
+  
+  if (nameLine1 && nameLine2) {
+    // Add click event to first name line
+    nameLine1.addEventListener('click', () => {
+      console.log("First name clicked - starting animation!");
+      startNameAnimation();
+    });
+    
+    // Add click event to second name line
+    nameLine2.addEventListener('click', () => {
+      console.log("Second name clicked - starting animation!");
+      startNameAnimation();
+    });
+    
+    // Add cursor pointer to show it's clickable
+    nameLine1.style.cursor = 'pointer';
+    nameLine2.style.cursor = 'pointer';
+    
+    console.log("Name click listeners added successfully!");
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   const sr = ScrollReveal({
